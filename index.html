@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBook Universe | Your Digital Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
+    <style>
+        /* Global Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Sharp Background Images */
+        section {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Background Images Without Blur */
+        #home { background: url('download.jpeg') no-repeat center center / cover; }
+        #about { background: url('download-1.jpeg') no-repeat center center / cover; }
+        #collection { background: url('download_2.jpeg') no-repeat center center / cover; }
+        #contact { background: url('download_3.jpeg') no-repeat center center / cover; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 10px 0;
+        }
+
+        /* Hero Text Animations */
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glowing Hover Effect */
+        .glow:hover {
+            box-shadow: 0px 0px 20px rgba(255, 255, 0, 0.8);
+        }
+
+        /* Ripple Button Effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.5s, opacity 0.6s;
+        }
+
+        .ripple:active::after {
+            transform: scale(4);
+            opacity: 1;
+            transition: 0s;
+        }
+
+        /* Zoom Animation on Scroll */
+        .zoom {
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .zoom:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="text-white bg-gray-900">
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-2xl font-bold">eBook Universe</h1>
+            <button class="md:hidden text-white text-xl" id="menu-btn">☰</button>
+            <ul class="hidden md:flex space-x-6" id="menu">
+                <li><a href="#home" class="hover:text-yellow-500">Home</a></li>
+                <li><a href="#about" class="hover:text-yellow-500">About</a></li>
+                <li><a href="#collection" class="hover:text-yellow-500">Collection</a></li>
+                <li><a href="#contact" class="hover:text-yellow-500">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-text">
+            <h1 class="text-5xl font-bold mb-4">eBook Universe</h1>
+            <p class="text-lg mb-6">Your one-stop digital library for all genres.</p>
+            <a href="#collection" class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 rounded-lg text-lg glow ripple">Explore Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="hero-text">
+            <h2 class="text-3xl font-bold mb-4">About Us</h2>
+            <p class="max-w-2xl mx-auto">eBook Universe is your gateway to unlimited reading with an extensive collection of eBooks for all ages.</p>
+        </div>
+    </section>
+
+    <!-- Collection Section -->
+    <section id="collection">
+        <div class="hero-text">
+            <h2 class="text-3xl font-bold mb-4">Our Collection</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-md reveal zoom">
+                    <h3 class="text-xl font-semibold mb-2">Sci-Fi & Fantasy</h3>
+                    <p>Explore new worlds and futuristic adventures.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg shadow-md reveal zoom">
+                    <h3 class="text-xl font-semibold mb-2">Mystery & Thriller</h3>
+                    <p>Dive into suspenseful and mind-bending stories.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg shadow-md reveal zoom">
+                    <h3 class="text-xl font-semibold mb-2">Self-Help & Motivation</h3>
+                    <p>Enhance your personal growth and mindset.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="hero-text">
+            <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+            <p class="max-w-2xl mx-auto mb-6">Need assistance? Contact us now.</p>
+            <a href="mailto:info@ebookuniverse.com" class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 rounded-lg text-lg glow ripple">Email Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-80 py-4 text-center">
+        <p>&copy; 2025 eBook Universe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ScrollReveal Animations
+        ScrollReveal().reveal('.reveal', {
+            delay: 200,
+            distance: '50px',
+            origin: 'bottom',
+            duration: 800
+        });
+
+        // Navbar Shrink on Scroll
+        window.addEventListener("scroll", function () {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById("menu-btn").addEventListener("click", function() {
+            document.getElementById("menu").classList.toggle("hidden");
+        });
+    </script>
+</body>
+</html>
